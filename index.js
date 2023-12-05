@@ -41,7 +41,7 @@ app.post("/create", async (req, res) => {
 });
 
 app.get("/getRecipe", (req, res) => {
-  Recipe.find({})
+  Recipe.find({}).sort({"createdAt": -1})
     .then(function (recipe) {
       res.json(recipe);
     })
@@ -54,7 +54,7 @@ app.get("/getRecipe", (req, res) => {
 
 
 app.get("/gethotone", (req, res) => {
-  Recipe.find({}).limit(1)
+  Recipe.find({}).limit(1).sort({"createdAt": -1})
     .then(function (recipe) {
       res.json(recipe);
     })
@@ -64,7 +64,7 @@ app.get("/gethotone", (req, res) => {
 });
 
 app.get("/gethotseven", (req, res) => {
-  Recipe.find({}).limit(7)
+  Recipe.find({}).limit(7).sort({"createdAt": -1})
     .then(function (recipe) {
       res.json(recipe);
     })
