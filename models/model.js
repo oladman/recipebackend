@@ -24,7 +24,10 @@ const recipeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    time: {
+      type: String,
+      required: false,
+    },
     image: {
       type: String,
       required: false,

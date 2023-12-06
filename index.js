@@ -30,7 +30,7 @@ mongoose
   });
 
 app.post("/create", async (req, res) => {
-  console.log(req.body);
+
   try {
     const recipe = await Recipe.create(req.body);
     res.status(200).json(Recipe);
