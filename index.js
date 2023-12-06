@@ -54,7 +54,7 @@ app.get("/getRecipe", (req, res) => {
 
 
 app.get("/gethotone", (req, res) => {
-  Recipe.find({}).limit(1).sort({"createdAt": -1})
+  Recipe.find({"category":"card"}, {"Title" : 1, "Description" : 1, "image" : 1, _id:1}).limit(1).sort({"createdAt": -1})
     .then(function (recipe) {
       res.json(recipe);
     })
@@ -64,16 +64,6 @@ app.get("/gethotone", (req, res) => {
 });
 
 app.get("/gethotseven", (req, res) => {
-  Recipe.find({}).limit(7).sort({"createdAt": -1})
-    .then(function (recipe) {
-      res.json(recipe);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
-});
-
-app.get("/categoryhot", (req, res) => {
   Recipe.find({"category":"hot"}, {"Title" : 1, "Description" : 1, "image" : 1, _id:1}).limit(7).sort({"createdAt": -1})
     .then(function (recipe) {
       res.json(recipe);
@@ -82,6 +72,8 @@ app.get("/categoryhot", (req, res) => {
       console.log(err);
     });
 });
+
+
 
 app.get("/getRecipe/:id", (req, res) => {
   const { id } = req.params;
