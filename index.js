@@ -73,6 +73,16 @@ app.get("/gethotseven", (req, res) => {
     });
 });
 
+app.get("/categoryhot", (req, res) => {
+  Recipe.find({"category":"hot"}, {"Title" : 1, "Description" : 1, "image" : 1, _id:1}).limit(7).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
 app.get("/getRecipe/:id", (req, res) => {
   const { id } = req.params;
   Recipe.findById(id)
