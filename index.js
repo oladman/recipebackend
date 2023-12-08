@@ -115,3 +115,84 @@ app.delete("/delete/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
+app.get("/dessert", (req, res) => {
+  Recipe.find({"tag":"Dessert"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/salad", (req, res) => {
+  Recipe.find({"tag":"Salad"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/soup", (req, res) => {
+  Recipe.find({"tag":"Soup"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/minsmeal", (req, res) => {
+  Recipe.find({"tag":"Minsmeal"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/breakfast", (req, res) => {
+  Recipe.find({"tag":"Breakfast"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/appetizer", (req, res) => {
+  Recipe.find({"tag":"Appetizer"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/maincourse", (req, res) => {
+  Recipe.find({"tag":"Maincourse"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.get("/sides", (req, res) => {
+  Recipe.find({"tag":"Sides"}, {"Title" : 1, "Description" : 1, "image" : 1, "time" : 1, "tag" : 1, _id:1}).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});

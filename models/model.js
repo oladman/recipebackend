@@ -4,7 +4,7 @@ const recipeSchema = new mongoose.Schema(
   {
     Title: {
       type: String,
-      required: [true, "Please enter a product name"],
+      required: [true, "Please enter a Title"],
     },
 
     Description: {
@@ -30,11 +30,15 @@ const recipeSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: false,
+      required: true,
     },
     category: {
       type: String,
       required: true,
+    },
+    tag: {
+      type: String,
+      required: false,
     },
   },
 
