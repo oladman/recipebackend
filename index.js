@@ -74,6 +74,16 @@ app.get("/gethotseven", (req, res) => {
 });
 
 
+app.get("/craving", (req, res) => {
+  Recipe.find({}).limit(3).sort({"createdAt": -1})
+    .then(function (recipe) {
+      res.json(recipe);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
 
 app.get("/getRecipe/:id", (req, res) => {
   const { id } = req.params;
