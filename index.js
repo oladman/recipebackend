@@ -17,22 +17,20 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
+require('dotenv').config();
 
 mongoose
-  .connect(
-    "mongodb+srv://oladman:vIRJDYpFPoadswd8@cluster0.vebwjm0.mongodb.net/recipe"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(8081, () => {
-      console.log("connected to MongoDb");
-      console.log("Server Running on port 8081");
+    app.listen(process.env.PORT, () => {
+      console.log("Connected to MongoDB");
+      console.log(`Server running on port ${process.env.PORT}`);
     });
   })
   .catch((error) => {
     console.log(error);
   });
+
 
 app.post("/create", async (req, res) => {
 
