@@ -1,19 +1,24 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dbConnect = require("./mongodb");
 const cors = require("cors");
-const multer = require("multer");
-const path = require("path");
 const Recipe = require("./models/model");
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
+const app = express();
+
+// MUST BE FIRST ON RENDER
 app.use(
   cors({
     origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
 
 mongoose
   .connect(
