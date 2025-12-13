@@ -1,11 +1,13 @@
+require("dotenv").config(); // ✅ MUST be first
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Recipe = require("./models/model");
 
-const app = express();
+const app = express(); // ✅ app FIRST
 
-// MUST BE FIRST ON RENDER
+// ✅ Middleware AFTER app is created
 app.use(
   cors({
     origin: "*",
@@ -17,18 +19,23 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-require('dotenv').config();
+// ✅ Safety check
+if (!process.env.MONGO_URI) {
+  console.error("❌ MONGO_URI is missing");
+  process.exit(1);
+}
 
+// ✅ DB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log("Connected to MongoDB");
-      console.log(`Server running on port ${process.env.PORT}`);
+    app.listen(process.env.PORT || 5000, () => {
+      console.log("✅ Connected to MongoDB");
+      console.log("🚀 Server running");
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error("❌ MongoDB connection error:", error);
   });
 
 
