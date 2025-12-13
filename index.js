@@ -78,7 +78,7 @@ app.get("/gethotseven", (req, res) => {
 
 
 app.get("/craving", (req, res) => {
-  Recipe.find({}).limit(3).sort({"createdAt": -1})
+  Recipe.find({}).limit(4).sort({"createdAt": -1})
     .then(function (recipe) {
       res.json(recipe);
     })
