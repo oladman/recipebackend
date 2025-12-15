@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Safety check
+
 if (!process.env.MONGO_URI) {
   console.error("❌ MONGO_URI is missing");
   process.exit(1);
